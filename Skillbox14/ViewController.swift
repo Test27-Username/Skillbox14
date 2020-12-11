@@ -1,11 +1,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewControllerUserDefaults: UIViewController {
 
+    @IBOutlet var textFieldFirstName: UITextField!
+    @IBOutlet var textFieldLastName: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
     }
 
 
