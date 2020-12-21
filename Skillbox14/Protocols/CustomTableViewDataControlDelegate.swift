@@ -2,5 +2,6 @@
 import Foundation
 
 protocol CustomTableViewDataControlDelegate{
-    func removeRow(_ index: Int)
+    func changeRow(index: Int, isCompleted: Bool)
+    func removeRow(index: Int)
 }

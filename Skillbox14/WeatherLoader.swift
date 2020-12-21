@@ -2,14 +2,10 @@
 import Foundation
 import SVProgressHUD
 
-let currentWeatherURL: String = "http://api.openweathermap.org/data/2.5/weather?appid=89ce343b4873970dd536441b1090e924&units=metric&lang=ru"
-// example: http://api.openweathermap.org/data/2.5/weather?appid=89ce343b4873970dd536441b1090e924&units=metric&lang=ru&q=moscow
-
-
 class WeatherLoader {
     
     func loadCurrent(cityName: String, completion: @escaping (WeatherData?) -> Void){
-        let url = URL(string: currentWeatherURL + "&q=" + cityName)!
+        let url = URL(string: AppConfig.currentWeatherURL + "&q=" + cityName)!
         let request = URLRequest(url: url)
         SVProgressHUD.show()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

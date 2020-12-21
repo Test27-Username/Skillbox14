@@ -2,7 +2,8 @@
 import Foundation
 
 protocol TaskControlDelegate {
-    func getTasks() -> [String]
-    func createTask(_ name: String)
-    func deleteTask(_ index: Int)
+    func getTasks() -> [Task]
+    func createTask(task: Task)
+    func updateTask(index: Int, task: Task)
+    func deleteTask(index: Int)
 }

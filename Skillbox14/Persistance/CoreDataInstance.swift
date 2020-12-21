@@ -15,6 +15,7 @@ extension CoreDataTask {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var isCompleted: Bool
 
 }
 
@@ -47,15 +48,18 @@ class CoreDataInstance: TaskControlDelegate {
         }
     }
     
-    func getTasks() -> [String] {
-        var tasks: [String] = []
+    func getTasks() -> [Task] {
+        var tasks: [Task] = []
         
         do {
             let fetchRequest: NSFetchRequest<CoreDataTask> = CoreDataTask.fetchRequest()
             let objects = try context.fetch(fetchRequest)
             
-            for task in objects {
-                tasks.append(task.name!)
+            for item in objects {
+                let task = Task()
+                task.name = item.name
+                task.isCompleted = item.isCompleted
+                tasks.append(task)
             }
         } catch {
             let nserror = error as NSError
@@ -65,14 +69,30 @@ class CoreDataInstance: TaskControlDelegate {
         return tasks
     }
     
-    func createTask(_ name: String) {
+    func createTask(task: Task) {
         let newTask = CoreDataTask(context: context)
-        newTask.name = name
+        newTask.name = task.name
         
         saveContext()
     }
     
-    func deleteTask(_ index: Int) {
+    func updateTask(index: Int, task: Task) {
+        do {
+            let fetchRequest: NSFetchRequest<CoreDataTask> = CoreDataTask.fetchRequest()
+            let objects = try context.fetch(fetchRequest)
+            
+            let updatedTask = objects[index]
+            updatedTask.name = task.name
+            updatedTask.isCompleted = task.isCompleted
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        saveContext()
+    }
+    
+    func deleteTask(index: Int) {
         do {
             let fetchRequest: NSFetchRequest<CoreDataTask> = CoreDataTask.fetchRequest()
             let objects = try context.fetch(fetchRequest)

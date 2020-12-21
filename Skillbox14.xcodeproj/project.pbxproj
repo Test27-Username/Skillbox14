@@ -27,6 +27,8 @@
 		B64CF0852581CC9600068236 /* UserDefaultsInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64CF0842581CC9600068236 /* UserDefaultsInstance.swift */; };
 		B64CF0892581ECE100068236 /* ViewControllerTODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64CF0882581ECE100068236 /* ViewControllerTODO.swift */; };
 		B64CF08C2581ED0400068236 /* TableViewCellTODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64CF08B2581ED0400068236 /* TableViewCellTODO.swift */; };
+		B6A652922586C5C9004B6A14 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A652912586C5C9004B6A14 /* AppConfig.swift */; };
+		B6A6529B2586CA2D004B6A14 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A6529A2586CA2D004B6A14 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		B64CF0842581CC9600068236 /* UserDefaultsInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstance.swift; sourceTree = "<group>"; };
 		B64CF0882581ECE100068236 /* ViewControllerTODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTODO.swift; sourceTree = "<group>"; };
 		B64CF08B2581ED0400068236 /* TableViewCellTODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellTODO.swift; sourceTree = "<group>"; };
+		B6A652912586C5C9004B6A14 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		B6A6529A2586CA2D004B6A14 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CE1017CC104A3C7835919B0C /* Pods-Skillbox14.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skillbox14.debug.xcconfig"; path = "Target Support Files/Pods-Skillbox14/Pods-Skillbox14.debug.xcconfig"; sourceTree = "<group>"; };
 		E2C60F9C7DCFE3807533A0A5 /* Pods-Skillbox14.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skillbox14.release.xcconfig"; path = "Target Support Files/Pods-Skillbox14/Pods-Skillbox14.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,8 +119,10 @@
 		B64CF05F25819C6700068236 /* Skillbox14 */ = {
 			isa = PBXGroup;
 			children = (
+				B6A652912586C5C9004B6A14 /* AppConfig.swift */,
 				B64CF06025819C6700068236 /* AppDelegate.swift */,
 				B64CF06C25819C6A00068236 /* Assets.xcassets */,
+				B6A652992586CA21004B6A14 /* Classes */,
 				B64CF07C2581C94600068236 /* Extensions */,
 				B64CF07125819C6A00068236 /* Info.plist */,
 				B64CF06E25819C6A00068236 /* LaunchScreen.storyboard */,
@@ -152,6 +158,14 @@
 				B6492FA22582E0F900C06322 /* CoreDataInstance.swift */,
 			);
 			path = Persistance;
+			sourceTree = "<group>";
+		};
+		B6A652992586CA21004B6A14 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B6A6529A2586CA2D004B6A14 /* Task.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,11 +292,13 @@
 				B62A5BD42581FE7500DE1035 /* UITableViewCell.swift in Sources */,
 				B6492F9E2582DAA500C06322 /* TaskControlDelegate.swift in Sources */,
 				B64CF07E2581C97000068236 /* UIViewController.swift in Sources */,
+				B6A652922586C5C9004B6A14 /* AppConfig.swift in Sources */,
 				B64CF0892581ECE100068236 /* ViewControllerTODO.swift in Sources */,
 				B62A5BD12581FE5400DE1035 /* UIResponder.swift in Sources */,
 				B6492FA32582E0F900C06322 /* CoreDataInstance.swift in Sources */,
 				B64CF0852581CC9600068236 /* UserDefaultsInstance.swift in Sources */,
 				B6492F9A2582D9B000C06322 /* CustomTableViewDataControlDelegate.swift in Sources */,
+				B6A6529B2586CA2D004B6A14 /* Task.swift in Sources */,
 				B6492FA62582EF9300C06322 /* ViewControllerWeather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,6 +4,7 @@ import RealmSwift
 
 class RealmTask: Object {
     @objc dynamic var name: String?
+    @objc dynamic var isCompleted: Bool = false
 }
 
 class WeatherData: Object {
@@ -59,34 +60,9 @@ class WeatherData: Object {
     }
 }
 
-class RealmInstance: TaskControlDelegate {
+class RealmInstance {
     static let shared = RealmInstance()
     private let realm = try! Realm()
-    
-    func getTasks() -> [String] {
-        var tasks: [String] = []
-        
-        for task in realm.objects(RealmTask.self) {
-            tasks.append(task.name!)
-        }
-        
-        return tasks
-    }
-    
-    func createTask(_ name: String) {
-        try! realm.write {
-            let newTask = RealmTask()
-            
-            newTask.name = name
-            self.realm.add(newTask)
-        }
-    }
-    
-    func deleteTask(_ index: Int) {
-        try! realm.write {
-            self.realm.delete(realm.objects(RealmTask.self)[index])
-        }
-    }
     
     func getWeather() -> WeatherData? {
         return realm.objects(WeatherData.self).first
@@ -94,10 +70,49 @@ class RealmInstance: TaskControlDelegate {
     
     func setWeather(_ weather: WeatherData?) {
         try! realm.write {
-            self.realm.delete(realm.objects(WeatherData.self))
+            realm.delete(realm.objects(WeatherData.self))
             if weather != nil {
-                self.realm.add(weather!)
+                realm.add(weather!)
             }
+        }
+    }
+}
+
+extension RealmInstance: TaskControlDelegate {
+    func getTasks() -> [Task] {
+        var tasks: [Task] = []
+        
+        for item in realm.objects(RealmTask.self) {
+            let task = Task()
+            task.name = item.name
+            task.isCompleted = item.isCompleted
+            tasks.append(task)
+        }
+        
+        return tasks
+    }
+    
+    func createTask(task: Task) {
+        try! realm.write {
+            let newTask = RealmTask()
+            
+            newTask.name = task.name
+            realm.add(newTask)
+        }
+    }
+    
+    func updateTask(index: Int, task: Task) {
+        try! realm.write {
+            let updatedTask = realm.objects(RealmTask.self)[index]
+            
+            updatedTask.name = task.name
+            updatedTask.isCompleted = task.isCompleted
+        }
+    }
+    
+    func deleteTask(index: Int) {
+        try! realm.write {
+            realm.delete(realm.objects(RealmTask.self)[index])
         }
     }
 }
